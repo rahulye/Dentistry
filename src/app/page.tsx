@@ -1,23 +1,23 @@
 /** @format */
-import { Button } from "@/components/ui/button";
-import {
-	SignIn,
-	SignInButton,
-	SignOutButton,
-	SignUpButton,
-	useAuth,
-} from "@clerk/nextjs";
+
+import CTA from "@/components/landing/CTA";
+import Header from "@/components/landing/Header";
+import Hero from "@/components/landing/Hero";
+import HowItWorks from "@/components/landing/HowItWorks";
+import PricingSection from "@/components/landing/PricingSection";
+import WhatToAsk from "@/components/landing/WhatToAsk";
+import Footer from "@/components/landing/Footer";
 
 export default function Home() {
-	// const { isSignedIn } = useAuth();
 	return (
-		<div className="flex justify-between">
-			<SignInButton mode="modal">
-				<Button className="btn btn-ghost btn-sm">Sign In</Button>
-			</SignInButton>
-			<SignUpButton mode="modal">
-				<Button className="btn btn-primary btn-sm">Get Started</Button>
-			</SignUpButton>
+		<div className="min-h-screen bg-background">
+			<Header />
+			<Hero />
+			<HowItWorks />
+			<WhatToAsk />
+			<CTA />
+			<PricingSection />
+			<Footer />
 		</div>
 	);
 }
