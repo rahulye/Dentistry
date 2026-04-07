@@ -207,18 +207,19 @@ npm install zod       // BODY schema
 
 
 
+DATABSE AND RELATED THINGS
 ***************************** ROUGHHH WWWOORRRKKK **************************
 
+uuid 
+cuid -> best
 
 PRISMA
-
-setup
-npm install prisma
-npm prisma init
-
-npm install prisma --save-dev
-npm install @prisma/client              --> for auto completion //its talk with db and upto date with all db changes
-
+npm install @prisma/client              //production   --> for auto completion //its talk with db and upto date with all db changes
+npm install prisma --save-dev            //development
+npx prisma init        or         npm install prisma
+                                  npm prisma init
+to push into DB
+npx prisma db push
 
 Migrate
 npx prisma migrate dev --name the_changes_u_did         //ONLY when you change the Prisma schema

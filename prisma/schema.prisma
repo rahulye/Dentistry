@@ -1,0 +1,81 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  phone     String
+  imageURL  String
+  firstName String
+  lastName  String?
+  gender    Gender
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // relation
+  appointments Appointment[]
+
+  @@map("users")    // for naming the prisma databse table name but the model name is User
+}
+
+model Doctor {
+  id         String   @id @default(cuid())
+  email      String   @unique
+  phone      String
+  imageURL   String
+  name       String
+  gender     Gender
+  bio        String
+  speciality String
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  // relations
+  appointments Appointment[]  // array symbol means that one doctor may have multiple appontments same goes to user relation Appointment[]
+
+  @@map("doctors")
+}
+
+model Appointment {
+  id        String            @id @default(cuid())
+  date      DateTime
+  time      String
+  duration  String
+  status    AppointmentStatus @default(CONFIRMED)
+  notes     String?
+  reason    String?
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+
+  //foreign keys
+  userId   String
+  doctorId String
+
+  // joins 
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade) 
+  doctor Doctor @relation(fields: [doctorId], references: [id], onDelete: Cascade)
+
+  @@map("appointments")
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  LGBTQ
+}
+
+enum AppointmentStatus {
+  CONFIRMED
+  COMPLETED
+}
