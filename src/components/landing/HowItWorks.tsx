@@ -6,19 +6,22 @@ import {
 	BrainIcon,
 	LucideCalendarRange,
 	MicIcon,
-  ZapIcon,
+	ZapIcon,
 } from "lucide-react";
 import { Button } from "../ui/button";
 
 const HowItWorks = () => {
 	return (
-		<section className="max-w-7xl mx-auto py-10 px-8 z-10 bg-linear-to-b from-background to-muted/5" id="how-it-works">
+		<section
+			className="max-w-7xl mx-auto py-10 px-8 z-10 bg-linear-to-b from-background to-muted/5"
+			id="how-it-works"
+		>
 			{/* main header */}
 			<div className="text-center mb-20">
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-linear-to-r from-primary/5 to-primary/10 rounded-full border border-primary/10 backdrop-blur-sm mb-6">
-          <ZapIcon className="size-4 text-primary" />
-          <span className="text-sm font-medium text-primary">Process</span>
-        </div>
+				<div className="inline-flex items-center gap-2 px-4 py-2 bg-linear-to-r from-primary/5 to-primary/10 rounded-full border border-primary/10 backdrop-blur-sm mb-6">
+					<ZapIcon className="size-4 text-primary" />
+					<span className="text-sm font-medium text-primary">Process</span>
+				</div>
 				<h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
 					<span className="bg-linear-to-br from-foreground to-foreground/60 bg-clip-text text-transparent">
 						Three steps to
@@ -127,12 +130,14 @@ const HowItWorks = () => {
 					</div>
 				</div>
 			</div>
-      {/* CTA */}
+			{/* CTA */}
 			<div className="text-center mt-16">
 				<SignUpButton mode="modal">
 					<Button size="lg">
-						<ArrowRightIcon className="mr-2 size-5" />
-						Get started now
+						<span className="flex items-center gap-2">
+							Get started now
+							<ArrowRightIcon className="size-5" />
+						</span>
 					</Button>
 				</SignUpButton>
 			</div>
