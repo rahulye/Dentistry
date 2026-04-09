@@ -4,7 +4,7 @@ import userSyncToDB from "@/lib/actions/userSyncToDB";
 import { useUser } from "@clerk/nextjs";
 import { useEffect } from "react";
 
-// this is componenet file that we use to run in layout.tsx (means whenever layout reloads and user not synced it wont go to dashboard path)
+// this is component file that we use to run in layout.tsx (means whenever layout reloads and user not synced it wont go to dashboard path)
 function UserSync() {
 	const { isSignedIn, isLoaded } = useUser();
 
