@@ -43,6 +43,7 @@ next-env.d.ts
 
 #migrations
 /prisma/migrations/
+/prisma/generated
 
 #notes
 /ALL_IN_ONE.txt
