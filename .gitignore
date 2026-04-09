@@ -40,3 +40,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 /src/generated/prisma
+
+#migrations
+/prisma/migrations/
+
+#notes
+/ALL_IN_ONE.txt
+

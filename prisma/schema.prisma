@@ -13,12 +13,13 @@ datasource db {
 
 model User {
   id        String   @id @default(cuid())
+  clerkId   String   @unique
   email     String   @unique
-  phone     String
-  imageURL  String
-  firstName String
+  phone     String?
+  imageURL  String?
+  firstName String?
   lastName  String?
-  gender    Gender
+  gender    Gender?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -31,12 +32,12 @@ model User {
 model Doctor {
   id         String   @id @default(cuid())
   email      String   @unique
-  phone      String
-  imageURL   String
+  phone      String?
+  imageURL   String?
   name       String
   gender     Gender
-  bio        String
-  speciality String
+  bio        String?
+  speciality String?
   isActive   Boolean  @default(true)
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
@@ -72,7 +73,9 @@ model Appointment {
 enum Gender {
   MALE
   FEMALE
-  LGBTQ
+  NON_BINARY
+  OTHER
+  PREFER_NOT_TO_SAY
 }
 
 enum AppointmentStatus {
