@@ -1,8 +1,6 @@
 "use server";
-/** @format */
 import { currentUser } from "@clerk/nextjs/server";
 import { prisma } from "../prisma";
-
 const userSyncToDB = async () => {
 	try {
 		const user = await currentUser();
@@ -25,7 +23,8 @@ const userSyncToDB = async () => {
 		});
     return dbUser;
 	} catch (err) {
-		console.error("Failed to sync user with DB", err);
+		console.error("Error while syncing user with DB ",err);
+		throw new Error("Failed to sync user with DB");
 	}
 };
 

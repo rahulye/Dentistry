@@ -37,7 +37,6 @@ model Doctor {
   imageURL   String?
   name       String
   gender     Gender
-  bio        String?
   speciality String?
   isActive   Boolean  @default(true)
   createdAt  DateTime @default(now())

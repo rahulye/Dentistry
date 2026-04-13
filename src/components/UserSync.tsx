@@ -1,6 +1,5 @@
 "use client";
-/** @format */
-import userSyncToDB from "@/lib/actions/userSyncToDB";
+import userSyncToDB from "@/lib/actions/users";
 import { useUser } from "@clerk/nextjs";
 import { useEffect } from "react";
 
