@@ -101,7 +101,7 @@ const PricingSection = () => {
 									<h3 className="text-2xl font-bold">AI Basic</h3>
 									<div className="flex items-end gap-1">
 										<span className="text-4xl font-bold bg-linear-to-r from-primary to-primary/80 bg-clip-text text-transparent">
-											₹499
+											$5.99
 										</span>
 										<span className="text-muted-foreground mb-1">/month</span>
 									</div>
@@ -148,7 +148,7 @@ const PricingSection = () => {
 								<div className="space-y-3">
 									<h3 className="text-2xl font-bold">AI Pro</h3>
 									<div className="flex items-end gap-1">
-										<span className="text-4xl font-bold">₹1099</span>
+										<span className="text-4xl font-bold">$10.99</span>
 										<span className="text-muted-foreground mb-1">/month</span>
 									</div>
 									<p className="text-muted-foreground">
