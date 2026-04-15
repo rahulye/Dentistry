@@ -18,7 +18,6 @@ async function ProPage() {
                 <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
                 <span className="text-sm font-medium text-primary">Upgrade to Pro</span>
               </div>
-
               <div>
                 <h1 className="text-4xl font-bold mb-2">Unlock Premium AI Dental Care</h1>
                 <p className="text-muted-foreground">
