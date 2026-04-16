@@ -4,7 +4,7 @@ import { currentUser } from "@clerk/nextjs/server";
 import { CrownIcon } from "lucide-react";
 import { redirect } from "next/navigation";
 
-async function ProPage() {
+const ProPage = async () => {
   const user = await currentUser();
   if (!user) redirect("/");
   return (
