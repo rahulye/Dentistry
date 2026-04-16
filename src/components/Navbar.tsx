@@ -1,12 +1,11 @@
 "use client";
-
 import { UserButton, useUser } from "@clerk/nextjs";
 import { CalendarIcon, CrownIcon, HomeIcon, MicIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-function Navbar() {
+const Navbar = () => {
 	const { user } = useUser();
 	const pathname = usePathname();
 
