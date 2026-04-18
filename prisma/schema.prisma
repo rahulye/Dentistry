@@ -5,7 +5,7 @@
 
 generator client {
   provider = "prisma-client"
-  output = "./generated"
+  output   = "./generated"
 }
 
 datasource db {
@@ -27,7 +27,7 @@ model User {
   // relation
   appointments Appointment[]
 
-  @@map("users")    // for naming the prisma databse table name but the model name is User
+  @@map("users") // for naming the prisma databse table name but the model name is User
 }
 
 model Doctor {
@@ -38,12 +38,13 @@ model Doctor {
   name       String
   gender     Gender
   speciality String?
+  bio        String?
   isActive   Boolean  @default(true)
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 
   // relations
-  appointments Appointment[]  // array symbol means that one doctor may have multiple appontments same goes to user relation Appointment[]
+  appointments Appointment[] // array symbol means that one doctor may have multiple appontments same goes to user relation Appointment[]
 
   @@map("doctors")
 }
@@ -52,7 +53,7 @@ model Appointment {
   id        String            @id @default(cuid())
   date      DateTime
   time      String
-  duration  String
+  duration  Int               @default(30)
   status    AppointmentStatus @default(CONFIRMED)
   notes     String?
   reason    String?
@@ -64,7 +65,7 @@ model Appointment {
   doctorId String
 
   // joins 
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade) 
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   doctor Doctor @relation(fields: [doctorId], references: [id], onDelete: Cascade)
 
   @@map("appointments")

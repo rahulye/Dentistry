@@ -3,6 +3,7 @@
 import {
 	createDoctor,
 	deleteDoctor,
+	getAvailableDoctors,
 	getDoctors,
 	updateDoctor,
 } from "@/lib/actions/doctors";
@@ -57,4 +58,12 @@ const useDeleteDoctor = () => {
 	});
 	return result;
 };
-export { useGetDoctors, useCreateDoctor, useUpdateDoctor, useDeleteDoctor };
+//get avaoilable doctors right now
+const useAvailableDoctors = () => {
+	const result = useQuery({
+		queryKey:["getAvailableDoctors"],
+		queryFn:getAvailableDoctors
+	})
+	return result;
+}
+export { useGetDoctors, useCreateDoctor, useUpdateDoctor, useDeleteDoctor , useAvailableDoctors };

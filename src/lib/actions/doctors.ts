@@ -112,5 +112,25 @@ const deleteDoctor = async (id: string) => {
 		throw new Error("Failed to delete doctor");
 	}
 };
-
-export { getDoctors, createDoctor, updateDoctor, deleteDoctor };
+//get available doctors right now
+ const getAvailableDoctors = async () => {
+  try {
+    const doctors = await prisma.doctor.findMany({
+      where: { isActive: true },
+      include: {
+        _count: {
+          select: { appointments: true },
+        },
+      },
+      orderBy: { name: "asc" },
+    });
+    return doctors.map((doctor) => ({
+      ...doctor,
+      appointmentCount: doctor._count.appointments,
+    }));
+  } catch (error) {
+    console.error("Error fetching available doctors ", error);
+    throw new Error("Failed to fetch available doctors");
+  }
+}
+export { getDoctors, createDoctor, updateDoctor, deleteDoctor , getAvailableDoctors };
