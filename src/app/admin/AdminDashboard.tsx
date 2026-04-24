@@ -1,6 +1,7 @@
 "use client";
 import Adminstats from "@/components/admin/Adminstats";
 import DoctorsManagement from "@/components/admin/DoctorsManagement";
+import RecentAppointments from "@/components/admin/RecentAppointments";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import Navbar from "@/components/Navbar";
 import { useGetAppointments } from "@/hooks/use-appointments";
@@ -10,7 +11,8 @@ import { SettingsIcon } from "lucide-react";
 const AdminDashboard = () => {
 	const { user } = useUser();
 	const { data: doctors = [], isLoading: isDoctorsLoading } = useGetDoctors();
-	const { data: appointments = [], isLoading: isAppointmentLoading } = useGetAppointments();
+	const { data: appointments = [], isLoading: isAppointmentLoading } =
+		useGetAppointments();
 	const stats = {
 		totalDoctors: doctors.length,
 		totalAppointments: appointments.length,
@@ -19,7 +21,7 @@ const AdminDashboard = () => {
 			(appointment) => appointment.status === "COMPLETED",
 		).length,
 	};
-	if (isDoctorsLoading || isAppointmentLoading) return <LoadingSpinner/>;
+	if (isDoctorsLoading || isAppointmentLoading) return <LoadingSpinner />;
 	return (
 		<div className="bg-background min-h-screen">
 			<Navbar />
@@ -49,14 +51,15 @@ const AdminDashboard = () => {
 						</div>
 					</div>
 				</div>
+				<Adminstats
+					totalDoctors={stats.totalDoctors}
+					activeDoctors={stats.activeDoctors}
+					totalAppointments={stats.totalAppointments}
+					completedAppointments={stats.completedAppointments}
+				/>
+				<DoctorsManagement />
+				<RecentAppointments />
 			</div>
-			<Adminstats
-				totalDoctors={stats.totalDoctors}
-				activeDoctors={stats.activeDoctors}
-				totalAppointments={stats.totalAppointments}
-				completedAppointments={stats.completedAppointments}
-			/>
-			<DoctorsManagement/>
 		</div>
 	);
 };

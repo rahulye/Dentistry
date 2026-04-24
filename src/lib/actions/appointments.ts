@@ -1,7 +1,9 @@
 "use server";
 import { auth } from "@clerk/nextjs/server";
 import { prisma } from "../prisma";
-import { AppointmentStatus } from "../../../prisma/generated/client";
+import {
+	AppointmentStatus,
+} from "../../../prisma/generated/client";
 const transformAppointment = (appointment: any) => {
 	return {
 		...appointment,
@@ -64,7 +66,7 @@ const getAppointments = async () => {
 				createdAt: "desc",
 			},
 		});
-		return appointments;
+    return appointments.map(transformAppointment);
 	} catch (err) {
 		console.error("Error while getting appointments from DB ", err);
 		throw new Error("Failed to fetch the appointments from DB");
@@ -161,33 +163,32 @@ const bookAppointment = async (input: BookAppointmentInput) => {
 				doctor: { select: { name: true, imageURL: true } },
 			},
 		});
-		console.log(appointment);
 		return transformAppointment(appointment);
 	} catch (err) {
 		console.error("Error while booking an appointment to DB ", err);
 		throw new Error("Failed to booking an appointment to DB");
 	}
 };
-// const updateAppointmentStatus = async (input: {
-// 	id: string;
-// 	status: AppointmentStatus;
-// }) => {
-// 	try {
-// 		const appointment = await prisma.appointment.update({
-// 			where: { id: input.id },
-// 			data: { status: input.status },
-// 		});
-// 		return appointment;
-// 	} catch (err) {
-// 		console.error("Error while updating the appointment status from DB ", err);
-// 		throw new Error("Failed to updating the appointment status from DB");
-// 	}
-// };
+const updateAppointmentStatus = async (input: {
+	id: string;
+	status: AppointmentStatus;
+}) => {
+	try {
+		const appointment = await prisma.appointment.update({
+			where: { id: input.id },
+			data: { status: input.status },
+		});
+		return appointment;
+	} catch (err) {
+		console.error("Error while updating the appointment status from DB ", err);
+		throw new Error("Failed to updating the appointment status from DB");
+	}
+};
 export {
 	getAppointments,
 	getUserAppointmentsStats,
 	getUserAppointments,
 	getBookedTimeSlots,
 	bookAppointment,
-	// updateAppointmentStatus,
+	updateAppointmentStatus,
 };

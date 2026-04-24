@@ -3,11 +3,10 @@
 import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import AdminDashboard from "./AdminDashboard";
-
 const AdminPage = async () => {
 	const user = await currentUser();
 	if (!user) redirect("/");
-	const adminEmail = process.env.ADMIN_EMAIL;
+	const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL;
 	const userEmail = user.emailAddresses[0]?.emailAddress;
 	if (!adminEmail || userEmail !== adminEmail) redirect("/dashboard");
 	return <AdminDashboard/>;

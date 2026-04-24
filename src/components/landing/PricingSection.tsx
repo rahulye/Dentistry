@@ -49,7 +49,7 @@ const PricingSection = () => {
 								<div className="space-y-3">
 									<h3 className="text-2xl font-bold">Free</h3>
 									<div className="flex items-end gap-1">
-										<span className="text-4xl font-bold">₹0</span>
+										<span className="text-4xl font-bold">$0</span>
 										<span className="text-muted-foreground mb-1">/month</span>
 									</div>
 									<p className="text-muted-foreground">
