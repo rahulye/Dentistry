@@ -1,6 +1,6 @@
 "use server";
 import { revalidatePath } from "next/cache";
-import { Gender } from "../../../prisma/generated/enums";
+import { Gender } from "@prisma/client";
 import { prisma } from "../prisma";
 import { getAvatarUrl } from "../utils";
 //Fetch doctors with appointment count
