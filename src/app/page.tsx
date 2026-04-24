@@ -9,11 +9,9 @@ import WhatToAsk from "@/components/landing/WhatToAsk";
 import Footer from "@/components/landing/Footer";
 import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
-import userSyncToDB from "@/lib/actions/users";
 
 export default async function Home() {
 	const user = await currentUser();
-	await userSyncToDB();
 	if(user) redirect("/dashboard")
 	return (
 		<div className="min-h-screen bg-background">

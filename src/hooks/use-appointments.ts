@@ -30,6 +30,7 @@ const useBookAppointment = () => {
 		mutationFn: bookAppointment,
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ["getUserAppointments"] });
+			queryClient.invalidateQueries({ queryKey: ["getAvailableDoctors"] });
 		},
 		onError: (err) => console.error("Failed to book appointment:", err),
 	});

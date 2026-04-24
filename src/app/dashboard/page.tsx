@@ -5,6 +5,7 @@ import WelcomeSection from "@/components/dashboard/WelcomeSection";
 import userSyncToDB from "@/lib/actions/users";
 
 const DashboardPage = async () => {
+	await userSyncToDB();
 	return (
 		<div className="min-h-screen bg-background">
 			<Navbar />

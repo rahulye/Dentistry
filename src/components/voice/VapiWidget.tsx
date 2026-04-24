@@ -71,7 +71,7 @@ const VapiWidget = () => {
 	}, []);
 	const toggleCall = async () => {
 		if (process.env.NEXT_PUBLIC_VAPI_ENABLED !== "true") {
-			alert("AI calling is temporarily disabled.");
+			alert("AI calling is temporarily disabled.(Free tier credits are over)");
 			return;
 		}
 		if (callActive) vapi.stop();

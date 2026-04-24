@@ -59,7 +59,7 @@ const DoctorSelectionStep = ({
 									<div className="flex items-center gap-2 mt-2">
 										<div className="flex items-center gap-1">
 											<StarIcon className="w-4 h-4 fill-amber-400 text-amber-400" />
-											<span className="text-sm font-medium">4.5</span>
+											<span className="text-sm font-medium">4.3</span>
 										</div>
 										<span className="text-sm text-muted-foreground">
 											({dentist.appointmentCount} appointments)

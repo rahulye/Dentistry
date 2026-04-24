@@ -70,10 +70,11 @@ const page = () => {
 								price: appointmentType?.price,
 							}),
 						});
-						if (!emailResponse.ok)
-							console.error("Failed to send confirmation email");
+						// if (!emailResponse.ok)
+						// 	console.error("Failed to send confirmation email");
 					} catch (error) {
-						console.error("Error sending confirmation email:", error);
+		// Resend free tier works only on my personal email, so I commented to avoid app crash in production
+						// console.error("Error sending confirmation email:", error);
 					}
 					// show the success modal
 					setShowConfirmationModal(true);
