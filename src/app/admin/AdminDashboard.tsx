@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import { useGetAppointments } from "@/hooks/use-appointments";
 import { useGetDoctors } from "@/hooks/use-doctors";
 import { useUser } from "@clerk/nextjs";
+import type { Doctor } from "@prisma/client";
 import { SettingsIcon } from "lucide-react";
 const AdminDashboard = () => {
 	const { user } = useUser();
@@ -16,7 +17,7 @@ const AdminDashboard = () => {
 	const stats = {
 		totalDoctors: doctors.length,
 		totalAppointments: appointments.length,
-		activeDoctors: doctors.filter((doctor) => doctor.isActive).length,
+		activeDoctors: doctors.filter((doctor:Doctor) => doctor.isActive).length,
 		completedAppointments: appointments.filter(
 			(appointment) => appointment.status === "COMPLETED",
 		).length,
