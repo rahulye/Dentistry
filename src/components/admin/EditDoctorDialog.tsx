@@ -20,7 +20,7 @@ import {
 } from "../ui/select";
 import { Button } from "../ui/button";
 import { useDeleteDoctor, useUpdateDoctor } from "@/hooks/use-doctors";
-import { Gender } from "@prisma/client";
+import { Gender } from "@/lib/utils";
 interface EditDoctorDialogProps {
 	isOpen: boolean;
 	onClose: () => void;
