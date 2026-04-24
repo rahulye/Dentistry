@@ -87,12 +87,12 @@ const TimeSelectionStep = ({
 								<Button
 									key={date}
 									variant={selectedDate === date ? "default" : "outline"}
-									onClick={() => handleDateSelect(date)}
+									onClick={() => date && handleDateSelect(date)}
 									className="h-auto p-3"
 								>
 									<div className="text-center">
 										<div className="font-medium">
-											{new Date(date).toLocaleDateString("en-US", {
+											{new Date(date ?? "").toLocaleDateString("en-US", {
 												weekday: "short",
 												month: "short",
 												day: "numeric",

@@ -6,10 +6,11 @@ import {
 	getUserAppointments,
 	updateAppointmentStatus,
 } from "@/lib/actions/appointments";
+import { TransformedAppointment } from "@/types/appointment";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 //fetch appointment
 const useGetAppointments = () => {
-	const result = useQuery({
+	const result = useQuery<TransformedAppointment[]>({
 		queryKey: ["getAppointments"],
 		queryFn: getAppointments,
 	});

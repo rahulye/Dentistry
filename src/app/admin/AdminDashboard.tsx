@@ -6,12 +6,13 @@ import LoadingSpinner from "@/components/LoadingSpinner";
 import Navbar from "@/components/Navbar";
 import { useGetAppointments } from "@/hooks/use-appointments";
 import { useGetDoctors } from "@/hooks/use-doctors";
+import { TransformedAppointment } from "@/types/appointment";
 import { Doctor } from "@/types/doctors";
 import { useUser } from "@clerk/nextjs";
 import { SettingsIcon } from "lucide-react";
 const AdminDashboard = () => {
 	const { user } = useUser();
-	const { data: doctors = [], isLoading: isDoctorsLoading } = useGetDoctors() as { data: Doctor[]; isLoading: boolean };
+	const { data: doctors = [], isLoading: isDoctorsLoading } = useGetDoctors();
 	const { data: appointments = [], isLoading: isAppointmentLoading } =
 		useGetAppointments();
 	const stats = {
@@ -19,7 +20,8 @@ const AdminDashboard = () => {
 		totalAppointments: appointments.length,
 		activeDoctors: doctors.filter((doctor) => doctor.isActive).length,
 		completedAppointments: appointments.filter(
-			(appointment) => appointment.status === "COMPLETED",
+			(appointment: TransformedAppointment) =>
+				appointment.status === "COMPLETED",
 		).length,
 	};
 	if (isDoctorsLoading || isAppointmentLoading) return <LoadingSpinner />;

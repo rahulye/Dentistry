@@ -16,7 +16,7 @@ const userSyncToDB = async () => {
 				clerkId: user.id,
 				firstName: user.firstName,
 				lastName: user.lastName,
-				email: user.emailAddresses[0]?.emailAddress,   // clerk stores emailAddress as array[]
+				email: user.emailAddresses[0]?.emailAddress ?? "",   // clerk stores emailAddress as array[]
 				imageURL: user.imageUrl,
         phone: user.phoneNumbers[0]?.phoneNumber,
 			},

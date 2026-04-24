@@ -15,7 +15,7 @@ const Navbar = () => {
 	const { user } = useUser();
 	const pathname = usePathname();
 	const isAdmin =
-		user?.emailAddresses?.[0].emailAddress ===
+		user?.emailAddresses?.[0]?.emailAddress ===
 		process.env.NEXT_PUBLIC_ADMIN_EMAIL;
 	return (
 		<nav className="fixed top-0 inset-x-0 z-50 px-6 py-2 border-b border-border/50 bg-background/80 backdrop-blur-md h-16">
