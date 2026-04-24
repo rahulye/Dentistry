@@ -6,11 +6,12 @@ import LoadingSpinner from "@/components/LoadingSpinner";
 import Navbar from "@/components/Navbar";
 import { useGetAppointments } from "@/hooks/use-appointments";
 import { useGetDoctors } from "@/hooks/use-doctors";
+import { Doctor } from "@/types/doctors";
 import { useUser } from "@clerk/nextjs";
 import { SettingsIcon } from "lucide-react";
 const AdminDashboard = () => {
 	const { user } = useUser();
-	const { data: doctors = [], isLoading: isDoctorsLoading } = useGetDoctors();
+	const { data: doctors = [], isLoading: isDoctorsLoading } = useGetDoctors() as { data: Doctor[]; isLoading: boolean };
 	const { data: appointments = [], isLoading: isAppointmentLoading } =
 		useGetAppointments();
 	const stats = {

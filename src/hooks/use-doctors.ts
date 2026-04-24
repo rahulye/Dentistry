@@ -7,10 +7,11 @@ import {
 	getDoctors,
 	updateDoctor,
 } from "@/lib/actions/doctors";
+import type { Doctor } from "@/types/doctors";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 //get doctors
 const useGetDoctors = () => {
-	const result = useQuery({
+	const result = useQuery<Doctor[]>({
 		queryKey: ["getDoctors"],
 		queryFn: getDoctors,
 	});

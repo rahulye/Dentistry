@@ -22,6 +22,8 @@ const getDoctors = async () => {
 			return {
 				...doctor,
 				appointmentCount: doctor._count.appointments,
+				createdAt: doctor.createdAt.toISOString(),
+	updatedAt: doctor.updatedAt.toISOString(),
 			};
 		});
 	} catch (err) {

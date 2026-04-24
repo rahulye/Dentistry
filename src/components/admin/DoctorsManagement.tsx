@@ -15,7 +15,7 @@ import { useState } from "react";
 import { Empty, EmptyTitle } from "../ui/empty";
 import AddDoctorDialog from "./AddDoctorDialog";
 import EditDoctorDialog from "./EditDoctorDialog";
-import { Doctor } from "../../../prisma/generated/browser";
+import { Doctor } from "@/types/doctors";
 const DoctorsManagement = () => {
 	const { data: doctors = [] } = useGetDoctors();
 	const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);

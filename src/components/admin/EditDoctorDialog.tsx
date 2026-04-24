@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Doctor, Gender } from "../../../prisma/generated/browser";
+import { useState } from "react";
+import { Doctor } from "@/types/doctors";
 import {
 	Dialog,
 	DialogFooter,
@@ -20,6 +20,7 @@ import {
 } from "../ui/select";
 import { Button } from "../ui/button";
 import { useDeleteDoctor, useUpdateDoctor } from "@/hooks/use-doctors";
+import { Gender } from "@prisma/client";
 interface EditDoctorDialogProps {
 	isOpen: boolean;
 	onClose: () => void;
