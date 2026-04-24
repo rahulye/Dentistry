@@ -1,7 +1,7 @@
 import { useCreateDoctor } from "@/hooks/use-doctors";
 import { formatIndianPhoneNumber } from "@/lib/utils";
 import { useState } from "react";
-import { Gender } from "../../../prisma/generated/enums";
+import { Gender } from "@prisma/client";
 import { Dialog, DialogTitle, DialogDescription,  } from "../ui/dialog";
 import { DialogContent, DialogHeader, DialogFooter } from "../ui/dialog";
 import { SelectContent,Select, SelectTrigger, SelectValue, SelectItem } from "../ui/select";
