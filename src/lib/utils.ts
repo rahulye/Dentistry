@@ -4,7 +4,7 @@ export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));
 }
 // make a url for doctor avatar image
-type Gender = "MALE" | "FEMALE" | "NON_BINARY" | "OTHER" | "PREFER_NOT_TO_SAY";
+export type Gender = "MALE" | "FEMALE" | "NON_BINARY" | "OTHER" | "PREFER_NOT_TO_SAY";
 export function getAvatarUrl(name: string, gender: Gender) {
 	const safeName = encodeURIComponent(name || "user");
 	const iranBase =
