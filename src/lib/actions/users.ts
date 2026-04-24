@@ -24,7 +24,7 @@ const userSyncToDB = async () => {
     return dbUser;
 	} catch (err) {
 		console.error("Error while syncing user with DB ",err);
-		throw new Error("Failed to sync user with DB");
+		return null
 	}
 };
 

@@ -37,6 +37,7 @@ const useUpdateDoctor = () => {
 		mutationFn: updateDoctor,
 		onSuccess: () => {
 			queryCLient.invalidateQueries({ queryKey: ["getDoctors"] });
+			queryCLient.invalidateQueries({ queryKey: ["getAvailableDoctors"] });
 		},
 		onError: (err) => {
 			console.error("Error while update a doctor field", err);
