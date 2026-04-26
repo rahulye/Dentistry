@@ -1,6 +1,6 @@
 "use server";
 import { revalidatePath } from "next/cache";
-import { Gender } from "@prisma/client";
+import type { GenderType } from "@/types/doctors";
 import { prisma } from "../prisma";
 import { getAvatarUrl } from "../utils";
 //Fetch doctors with appointment count
@@ -35,7 +35,7 @@ const getDoctors = async () => {
 interface doctorDataProps {
 	name: string;
 	email: string;
-	gender: Gender;
+	gender: GenderType;
 	phone: string | null;
 	speciality: string | null;
 	isActive: boolean;

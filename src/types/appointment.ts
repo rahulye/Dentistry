@@ -1,4 +1,6 @@
-import { AppointmentStatus, Prisma } from "@prisma/client";
+import { Prisma } from "@prisma/client";
+
+export type AppointmentStatusType = "CONFIRMED" | "COMPLETED";
 
 export type AppointmentWithUserAndDoctor =
   Prisma.AppointmentGetPayload<{
@@ -25,7 +27,7 @@ export type TransformedAppointment = {
   date: string;
   time: string;
   duration: number;
-  status: AppointmentStatus;
+  status: AppointmentStatusType;
   reason: string ;
   notes: string;
   createdAt: string;
@@ -37,5 +39,3 @@ export type TransformedAppointment = {
   doctorName: string;
   doctorImageUrl: string;
 };
-
-export type AppointmentStatusType = "CONFIRMED" | "COMPLETED";

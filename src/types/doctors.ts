@@ -1,4 +1,9 @@
-import { Gender } from "@prisma/client";
+export type GenderType =
+  | "MALE"
+  | "FEMALE"
+  | "NON_BINARY"
+  | "OTHER"
+  | "PREFER_NOT_TO_SAY";
 
 export type Doctor = {
 	id: string;
@@ -6,7 +11,7 @@ export type Doctor = {
 	email: string;
 	phone: string | null;
 	imageURL: string | null;
-	gender: Gender;
+	gender: GenderType;
 	speciality: string | null;
 	bio: string | null;
 	isActive: boolean;

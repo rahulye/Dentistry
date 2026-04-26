@@ -157,7 +157,7 @@ const getBookedTimeSlots = async (
 	date: string,
 ): Promise<string[]> => {
 	try {
-		const appointments: { time: string }[]= await prisma.appointment.findMany({
+		const appointments: { time: string }[] = await prisma.appointment.findMany({
 			where: {
 				doctorId,
 				date: new Date(`${date}T00:00:00`),
@@ -242,10 +242,15 @@ const updateAppointmentStatus = async (input: {
 	status: AppointmentStatusType;
 }) => {
 	try {
-		return await prisma.appointment.update({
+		const appointment = await prisma.appointment.update({
 			where: { id: input.id },
 			data: { status: input.status },
 		});
+		return {
+			...appointment,
+			createdAt: appointment.createdAt.toISOString(),
+			updatedAt: appointment.updatedAt.toISOString(),
+		};
 	} catch (err) {
 		console.error("Error updating appointment status:", err);
 		throw new Error("Failed to update appointment status");

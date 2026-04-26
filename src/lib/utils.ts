@@ -1,11 +1,11 @@
+import { GenderType } from "@/types/doctors";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));
 }
 // make a url for doctor avatar image
-export type Gender = "MALE" | "FEMALE" | "NON_BINARY" | "OTHER" | "PREFER_NOT_TO_SAY";
-export function getAvatarUrl(name: string, gender: Gender) {
+export function getAvatarUrl(name: string, gender: GenderType) {
 	const safeName = encodeURIComponent(name || "user");
 	const iranBase =
 		gender === "FEMALE" ? "girl" : gender === "MALE" ? "boy" : "";
