@@ -20,7 +20,8 @@ import {
 } from "../ui/select";
 import { Button } from "../ui/button";
 import { useDeleteDoctor, useUpdateDoctor } from "@/hooks/use-doctors";
-import { Gender } from "@/lib/utils";
+import { GenderType } from "@/types/doctors";
+
 interface EditDoctorDialogProps {
 	isOpen: boolean;
 	onClose: () => void;
@@ -139,7 +140,7 @@ const EditDoctorDialog = ({
 									onValueChange={(value) =>
 										setEditingDoctor({
 											...editingDoctor,
-											gender: value as Gender,
+											gender: value as GenderType,
 										})
 									}
 								>
