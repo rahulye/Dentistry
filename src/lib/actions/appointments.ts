@@ -44,13 +44,10 @@ const getUserAppointments = async (): Promise<TransformedAppointment[]> => {
 	try {
 		const { userId } = await auth();
 		if (!userId) throw new Error("You must be logged in");
-
 		const user = await prisma.user.findUnique({
 			where: { clerkId: userId },
 		});
-
 		if (!user) throw new Error("User not found");
-
 		const appointments = await prisma.appointment.findMany({
 			where: { userId: user.id },
 			include: {

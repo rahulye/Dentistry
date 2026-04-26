@@ -23,7 +23,7 @@ const getDoctors = async () => {
 				...doctor,
 				appointmentCount: doctor._count.appointments,
 				createdAt: doctor.createdAt.toISOString(),
-	updatedAt: doctor.updatedAt.toISOString(),
+				updatedAt: doctor.updatedAt.toISOString(),
 			};
 		});
 	} catch (err) {
@@ -49,9 +49,19 @@ const createDoctor = async (input: doctorDataProps) => {
 				...input,
 				imageURL: getAvatarUrl(input.name, input.gender),
 			},
+			include: {
+				_count: {
+					select: { appointments: true },
+				},
+			},
 		});
 		revalidatePath("/admin");
-		return doctor;
+		return {
+			...doctor,
+			appointmentCount: doctor._count.appointments,
+			createdAt: doctor.createdAt.toISOString(),
+			updatedAt: doctor.updatedAt.toISOString(),
+		};
 	} catch (err) {
 		console.error("Error while creating doctors to DB ", err);
 		throw new Error("Failed to create doctors to DB");
@@ -93,8 +103,18 @@ const updateDoctor = async (input: updateDoctorDataProps) => {
 				gender: input.gender,
 				isActive: input.isActive,
 			},
+			include: {
+				_count: {
+					select: { appointments: true },
+				},
+			},
 		});
-		return doctor;
+		return {
+			...doctor,
+			appointmentCount: doctor._count.appointments,
+			createdAt: doctor.createdAt.toISOString(),
+			updatedAt: doctor.updatedAt.toISOString(),
+		};
 	} catch (err) {
 		console.error("Error while updating doctors to DB ", err);
 		throw new Error("Failed to update doctors to DB");
@@ -115,24 +135,32 @@ const deleteDoctor = async (id: string) => {
 	}
 };
 //get available doctors right now
- const getAvailableDoctors = async () => {
-  try {
-    const doctors = await prisma.doctor.findMany({
-      where: { isActive: true },
-      include: {
-        _count: {
-          select: { appointments: true },
-        },
-      },
-      orderBy: { name: "asc" },
-    });
-    return doctors.map((doctor) => ({
-      ...doctor,
-      appointmentCount: doctor._count.appointments,
-    }));
-  } catch (error) {
-    console.error("Error fetching available doctors ", error);
-    throw new Error("Failed to fetch available doctors");
-  }
-}
-export { getDoctors, createDoctor, updateDoctor, deleteDoctor , getAvailableDoctors };
+const getAvailableDoctors = async () => {
+	try {
+		const doctors = await prisma.doctor.findMany({
+			where: { isActive: true },
+			include: {
+				_count: {
+					select: { appointments: true },
+				},
+			},
+			orderBy: { name: "asc" },
+		});
+		return doctors.map((doctor) => ({
+			...doctor,
+			appointmentCount: doctor._count.appointments,
+			createdAt: doctor.createdAt.toISOString(),
+			updatedAt: doctor.updatedAt.toISOString(),
+		}));
+	} catch (error) {
+		console.error("Error fetching available doctors ", error);
+		throw new Error("Failed to fetch available doctors");
+	}
+};
+export {
+	getDoctors,
+	createDoctor,
+	updateDoctor,
+	deleteDoctor,
+	getAvailableDoctors,
+};

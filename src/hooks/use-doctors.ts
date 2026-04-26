@@ -62,7 +62,7 @@ const useDeleteDoctor = () => {
 };
 //get avaoilable doctors right now
 const useAvailableDoctors = () => {
-	const result = useQuery({
+	const result = useQuery<Doctor[]>({
 		queryKey:["getAvailableDoctors"],
 		queryFn:getAvailableDoctors
 	})

@@ -1,4 +1,5 @@
 import { useAvailableDoctors } from "@/hooks/use-doctors";
+import { Doctor } from "@/types/doctors";
 import Image from "next/image";
 
 const DoctorInfo = ({ doctorId }: { doctorId: string }) => {
