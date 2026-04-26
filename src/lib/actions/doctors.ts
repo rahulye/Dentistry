@@ -3,6 +3,7 @@ import { revalidatePath } from "next/cache";
 import type { GenderType } from "@/types/doctors";
 import { prisma } from "../prisma";
 import { getAvatarUrl } from "../utils";
+import type { Prisma } from "@prisma/client";
 //Fetch doctors with appointment count
 const getDoctors = async () => {
 	try {
@@ -18,14 +19,20 @@ const getDoctors = async () => {
 				createdAt: "desc",
 			},
 		});
-		return doctors.map((doctor) => {
-			return {
-				...doctor,
-				appointmentCount: doctor._count.appointments,
-				createdAt: doctor.createdAt.toISOString(),
-				updatedAt: doctor.updatedAt.toISOString(),
-			};
-		});
+		return doctors.map(
+			(
+				doctor: Prisma.DoctorGetPayload<{
+					include: { _count: { select: { appointments: true } } };
+				}>,
+			) => {
+				return {
+					...doctor,
+					appointmentCount: doctor._count.appointments,
+					createdAt: doctor.createdAt.toISOString(),
+					updatedAt: doctor.updatedAt.toISOString(),
+				};
+			},
+		);
 	} catch (err) {
 		console.error("Error while getting doctors from DB ", err);
 		throw new Error("Failed to fetch the doctors from DB");
@@ -146,12 +153,18 @@ const getAvailableDoctors = async () => {
 			},
 			orderBy: { name: "asc" },
 		});
-		return doctors.map((doctor) => ({
-			...doctor,
-			appointmentCount: doctor._count.appointments,
-			createdAt: doctor.createdAt.toISOString(),
-			updatedAt: doctor.updatedAt.toISOString(),
-		}));
+		return doctors.map(
+			(
+				doctor: Prisma.DoctorGetPayload<{
+					include: { _count: { select: { appointments: true } } };
+				}>,
+			) => ({
+				...doctor,
+				appointmentCount: doctor._count.appointments,
+				createdAt: doctor.createdAt.toISOString(),
+				updatedAt: doctor.updatedAt.toISOString(),
+			}),
+		);
 	} catch (error) {
 		console.error("Error fetching available doctors ", error);
 		throw new Error("Failed to fetch available doctors");

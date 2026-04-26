@@ -185,7 +185,6 @@ interface BookAppointmentInput {
 	time: string;
 	reason?: string;
 }
-
 const bookAppointment = async (
 	input: BookAppointmentInput,
 ): Promise<TransformedAppointment> => {
