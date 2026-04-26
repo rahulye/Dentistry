@@ -2,7 +2,7 @@
 
 import { auth } from "@clerk/nextjs/server";
 import { prisma } from "../prisma";
-import { AppointmentStatus } from "@prisma/client";
+import { AppointmentStatusType } from "@/types/appointment";
 import {
 	AppointmentWithUserAndDoctor,
 	TransformedAppointment,
@@ -160,7 +160,7 @@ const getBookedTimeSlots = async (
 		const appointments = await prisma.appointment.findMany({
 			where: {
 				doctorId,
-				date: new Date(date),
+				date: new Date(`${date}T00:00:00`),
 				status: {
 					in: ["CONFIRMED", "COMPLETED"],
 				},
@@ -239,7 +239,7 @@ const bookAppointment = async (
 
 const updateAppointmentStatus = async (input: {
 	id: string;
-	status: AppointmentStatus;
+	status: AppointmentStatusType;
 }) => {
 	try {
 		return await prisma.appointment.update({

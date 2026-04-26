@@ -36,8 +36,8 @@ interface doctorDataProps {
 	name: string;
 	email: string;
 	gender: Gender;
-	phone: string | undefined;
-	speciality: string | undefined;
+	phone: string | null;
+	speciality: string | null;
 	isActive: boolean;
 }
 const createDoctor = async (input: doctorDataProps) => {
@@ -73,8 +73,8 @@ interface updateDoctorDataProps extends Partial<doctorDataProps> {
 }
 const updateDoctor = async (input: updateDoctorDataProps) => {
 	try {
-		if (!input.name || !input.email)
-			throw new Error("Name and Email are required");
+		if (input.name === "" || input.email === "")
+			throw new Error("Name and Email cannot be empty");
 		const currentDoctor = await prisma.doctor.findUnique({
 			where: {
 				id: input.id,
@@ -127,7 +127,7 @@ const deleteDoctor = async (id: string) => {
 			where: { id },
 		});
 
-		revalidatePath("/admin");
+		revalidatePath("/", "layout");
 		return { success: true };
 	} catch (err) {
 		console.error("Error while deleting doctor", err);

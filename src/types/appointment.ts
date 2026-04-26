@@ -38,3 +38,4 @@ export type TransformedAppointment = {
   doctorImageUrl: string;
 };
 
+export type AppointmentStatusType = "CONFIRMED" | "COMPLETED";
