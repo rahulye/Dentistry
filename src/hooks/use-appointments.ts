@@ -19,7 +19,7 @@ const useGetAppointments = () => {
 //get booked appointments
 const useBookedTimeSlots = (doctorId: string, date: string) => {
 	return useQuery({
-		queryKey: ["getBookedTimeSlots"],
+		queryKey: ["getBookedTimeSlots", doctorId, date],
 		queryFn: () => getBookedTimeSlots(doctorId!, date),
 		enabled: !!doctorId && !!date, // only run query if both doctorId and date are provided
 	});
@@ -38,7 +38,7 @@ const useBookAppointment = () => {
 };
 // get user booked appointments
 export function useUserAppointments() {
-	const result = useQuery({
+	const result = useQuery<TransformedAppointment[]>({
 		queryKey: ["getUserAppointments"],
 		queryFn: getUserAppointments,
 	});

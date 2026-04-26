@@ -26,8 +26,8 @@ export type TransformedAppointment = {
   time: string;
   duration: number;
   status: AppointmentStatus;
-  reason: string | null;
-  notes: string | null;
+  reason: string ;
+  notes: string;
   createdAt: string;
   updatedAt: string;
 

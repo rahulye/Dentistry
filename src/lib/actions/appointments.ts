@@ -157,7 +157,7 @@ const getBookedTimeSlots = async (
 	date: string,
 ): Promise<string[]> => {
 	try {
-		const appointments = await prisma.appointment.findMany({
+		const appointments: { time: string }[]= await prisma.appointment.findMany({
 			where: {
 				doctorId,
 				date: new Date(`${date}T00:00:00`),
