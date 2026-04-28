@@ -84,7 +84,7 @@ function AppointmentConfirmationEmail({
           <Text style={footer}>
             Best regards,
             <br />
-            The DentWise Team
+            The Dentistry Team
           </Text>
 
           <Text style={footerText}>
