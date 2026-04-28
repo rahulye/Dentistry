@@ -1,6 +1,7 @@
 /** @format */
 
 import { Button } from "@/components/ui/button";
+import { SignUpButton } from "@clerk/nextjs";
 import { MicIcon, CalendarIcon } from "lucide-react";
 const CTA = () => {
 	return (
@@ -31,21 +32,29 @@ const CTA = () => {
 					{/* CTA Buttons */}
 					<div>
 						<div className="flex flex-col sm:flex-row gap-3 pt-2">
-							<Button
-								size="lg"
-								className="px-6 py-3 font-semibold bg-linear-to-r from-primary to-primary/90 hover:from-primary/95 hover:to-primary/85 shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl"
-							>
-								<MicIcon className="mr-2 h-4 w-4" />
-								Start free chat
-							</Button>
-							<Button
-								size="lg"
-								variant="outline"
-								className="px-6 py-3 font-semibold border border-primary/20 hover:border-primary/40 hover:bg-primary/5 transition-all duration-300 rounded-xl"
-							>
-								<CalendarIcon className="mr-2 h-4 w-4" />
-								Book appointment
-							</Button>
+							<SignUpButton mode="modal">
+								<Button
+									size="lg"
+									className="px-6 py-3 font-semibold bg-linear-to-r from-primary to-primary/90 hover:from-primary/95 hover:to-primary/85 shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl"
+								>
+									<span className="flex items-center gap-2">
+										<MicIcon className="mr-2 h-4 w-4" />
+										Start free chat
+									</span>
+								</Button>
+							</SignUpButton>
+							<SignUpButton mode="modal">
+								<Button
+									size="lg"
+									variant="outline"
+									className="px-6 py-3 font-semibold border border-primary/20 hover:border-primary/40 hover:bg-primary/5 transition-all duration-300 rounded-xl"
+								>
+									<span className="flex items-center gap-2">
+										<CalendarIcon className="mr-2 h-4 w-4" />
+										Book appointment
+									</span>
+								</Button>
+							</SignUpButton>
 						</div>
 					</div>
 				</div>
