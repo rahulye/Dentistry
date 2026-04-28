@@ -22,6 +22,12 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
 	title: "Dentistry - AI powered Dental Assistant",
 	description: "Get 24/7 AI-powered dental advice through voice calls.",
+	icons: {
+		icon: [
+			{ url: "/favicon_io/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+			{ url: "/favicon_io/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+		],
+	},
 };
 
 export default function RootLayout({
@@ -49,7 +55,7 @@ export default function RootLayout({
 					<body>
 						<main>
 							<UserSync />
-							<Toaster/>
+							<Toaster />
 							{children}
 						</main>
 					</body>
