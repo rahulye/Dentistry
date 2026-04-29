@@ -74,11 +74,7 @@ const PricingSection = () => {
 									</div>
 									<div className="flex items-start gap-3">
 										<CheckCircleIcon className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-										<span className="text-sm">Find dentists in your area</span>
-									</div>
-									<div className="flex items-start gap-3">
-										<CheckCircleIcon className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-										<span className="text-sm">Basic text chat support</span>
+										<span className="text-sm">Email support</span>
 									</div>
 									<div className="flex items-start gap-3">
 										<CheckCircleIcon className="w-5 h-5 text-primary mt-0.5 shrink-0" />
@@ -117,11 +113,7 @@ const PricingSection = () => {
 								<div className="space-y-4">
 									<div className="flex items-start gap-3">
 										<CheckCircleIcon className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-										<span className="text-sm">Everything in Free</span>
-									</div>
-									<div className="flex items-start gap-3">
-										<CheckCircleIcon className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-										<span className="text-sm">10 AI voice calls per month</span>
+										<span className="text-sm">	</span>
 									</div>
 									<div className="flex items-start gap-3">
 										<CheckCircleIcon className="w-5 h-5 text-primary mt-0.5 shrink-0" />
@@ -133,11 +125,7 @@ const PricingSection = () => {
 									</div>
 									<div className="flex items-start gap-3">
 										<CheckCircleIcon className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-										<span className="text-sm">Priority support</span>
-									</div>
-									<div className="flex items-start gap-3">
-										<CheckCircleIcon className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-										<span className="text-sm">Call history & recordings</span>
+										<span className="text-sm">Call transcripts</span>
 									</div>
 								</div>
 							</div>
@@ -171,10 +159,6 @@ const PricingSection = () => {
 									<div className="flex items-start gap-3">
 										<CheckCircleIcon className="w-5 h-5 text-primary mt-0.5 shrink-0" />
 										<span className="text-sm">Unlimited AI voice calls</span>
-									</div>
-									<div className="flex items-start gap-3">
-										<CheckCircleIcon className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-										<span className="text-sm">Advanced AI dental analysis</span>
 									</div>
 									<div className="flex items-start gap-3">
 										<CheckCircleIcon className="w-5 h-5 text-primary mt-0.5 shrink-0" />
